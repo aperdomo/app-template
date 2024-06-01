@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+    api:
+        container_name: 'api-template-service'
+        image: api-template:latest
+        build:
+            target: web
+            context: .
+        env_file:
+            - .env
+        ports:
+            - "8000:80"
+        volumes:
+            - .:/var/www/html
+        depends_on:
+            - sql
+    sql:
+        container_name: 'api-template-sql'
+        image: mysql:5.7
+        environment:
+            MYSQL_DATABASE: default
+            MYSQL_USER: default
+            MYSQL_PASSWORD: password
+            MYSQL_ROOT_PASSWORD: password
+        ports:
+            - "3306:3306"
