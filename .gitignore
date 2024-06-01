@@ -19,4 +19,6 @@ yarn-error.log
 /.idea
 /.vscode
 /.vendor
-./storage*
+/storage*
+artisan
+.gitattributes
