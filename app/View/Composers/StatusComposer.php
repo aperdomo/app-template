@@ -2,6 +2,7 @@
 
 namespace App\View\Composers;
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\View\View;
 
 class StatusComposer
@@ -17,6 +18,17 @@ class StatusComposer
      */
     public function compose(View $view): void
     {
-        $view->with('status', 'ok');
+        $routes = array_map(function ($route) {
+            return [
+                'uri' => $route->uri(),
+                'methods' => implode(', ', $route->methods()),
+            ];
+        }, Route::getRoutes()->getRoutes());
+
+        $view->with([
+            'status' => 'ok',
+            'time' => now()->format('Y-m-d H:i:s'),
+            'routes' => $routes,
+        ]);
     }
 }

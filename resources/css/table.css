@@ -1,0 +1,23 @@
+.content div {
+    display: block;
+    font-family: "Courier New";
+    color: white;
+}
+
+.content div h1 {
+    padding-bottom: 10px;
+    font-weight: bold;
+}
+
+.app-table {
+    border: white 1px solid;
+}
+
+.app-table th, tr, td {
+    border: white 1px solid;
+    padding: 10px;
+}
+
+.app-table caption {
+    padding-bottom: 10px;
+}
