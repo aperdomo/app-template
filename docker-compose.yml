@@ -1,4 +1,4 @@
-version: '3.8'
+version: '2.4'
 
 services:
     api:
@@ -14,7 +14,8 @@ services:
         volumes:
             - .:/var/www/html
         depends_on:
-            - sql
+            sql:
+                condition: service_healthy
     sql:
         container_name: 'app-template-sql'
         image: mysql:5.7
@@ -27,3 +28,8 @@ services:
             MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
         ports:
             - "3306:3306"
+        healthcheck:
+            test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "${DB_USERNAME}", "-p${DB_PASSWORD}" ]
+            interval: 20s
+            timeout: 10s
+            retries: 10
