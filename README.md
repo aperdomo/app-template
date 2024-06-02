@@ -5,7 +5,7 @@ This is a simple project that I have created as a template to be able to stand u
 - A service layer that is using Laravel 11.x
   - And is using Apache as a web server.
 - A front end that is using a framework TBD
-- A database that is using MySQL.
+- A MySQL database.
 
 ## Prerequisites
 
@@ -13,10 +13,16 @@ This is a simple project that I have created as a template to be able to stand u
 - Node
 - Ideally a Unix-based shell to be able to utilize the included `Makefile`.
 
-## Building the Project
+## Initially building the project
 
-1. `make build` - This will build the project.
-2. `make start` - This will start the project.
+1. `make init` - This will initially build + start the project, which should set up a local .env from `.env.example`.
+
+## Continuously building the project
+
+- `make build` - This will build the project.
+- `make start` - This will start the project.
+- `make stop` - This will stop the project.
+- `make restart` - This will restart the project.
 
 ## Testing the Project
 
