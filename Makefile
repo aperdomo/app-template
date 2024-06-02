@@ -1,4 +1,4 @@
-DOCKER_COMPOSE_EXEC = docker exec -t api-template-service
+DOCKER_COMPOSE_EXEC = docker exec -t app-template-service
 
 build:
 	docker compose build --no-cache

@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
     api:
-        container_name: 'api-template-service'
+        container_name: 'app-template-service'
         image: api-template:latest
         build:
             target: web
@@ -16,7 +16,7 @@ services:
         depends_on:
             - sql
     sql:
-        container_name: 'api-template-sql'
+        container_name: 'app-template-sql'
         image: mysql:5.7
         environment:
             MYSQL_DATABASE: default
