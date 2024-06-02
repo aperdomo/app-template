@@ -1,5 +1,7 @@
 DOCKER_COMPOSE_EXEC = docker exec -t app-template-service
 
+init:
+	cp .env.example .env && make build && make start
 build:
 	docker compose build --no-cache
 stop:
@@ -7,7 +9,7 @@ stop:
 start:
 	docker compose up -d
 restart:
-	docker compose down && docker compose up -d
+	make stop && make start
 migrate-fresh-seed:
 	$(DOCKER_COMPOSE_EXEC) php artisan migrate:fresh --seed
 test:
