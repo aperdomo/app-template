@@ -10,3 +10,4 @@ Route::get('/user', function (Request $request) {
 Route::prefix('v1')->group(function () {
     include 'v1/status.php';
 });
+
