@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\View\Composers\StatusComposer;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View as ViewFacade;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +21,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        ViewFacade::composer(
+            [
+                'status',
+            ],
+            StatusComposer::class
+        );
     }
 }
