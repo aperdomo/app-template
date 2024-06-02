@@ -15,7 +15,7 @@ This is a simple project that I have created as a template to be able to stand u
 
 ## Initially building the project
 
-1. `make init` - This will initially build + start the project, which should set up a local .env from `.env.example`.
+1. `make init` - This will initially build + start the project.
 
 ## Continuously building the project
 

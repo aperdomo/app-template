@@ -18,10 +18,12 @@ services:
     sql:
         container_name: 'app-template-sql'
         image: mysql:5.7
+        env_file:
+            - .env
         environment:
-            MYSQL_DATABASE: default
-            MYSQL_USER: default
-            MYSQL_PASSWORD: password
-            MYSQL_ROOT_PASSWORD: password
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_USER: ${DB_USERNAME}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
         ports:
             - "3306:3306"
