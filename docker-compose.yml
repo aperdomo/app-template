@@ -3,7 +3,7 @@ version: '3.8'
 services:
     api:
         container_name: 'app-template-service'
-        image: api-template:latest
+        image: app-template:latest
         build:
             target: web
             context: .
