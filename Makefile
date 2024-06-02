@@ -2,7 +2,7 @@ SERVICE_NAME = app-template-service
 DOCKER_EXEC = docker exec -t app-template-service
 
 init:
-	cp .env.example .env && make build && make start
+	cp .env.example .env && make build && make start && make migrate-fresh-seed
 build:
 	docker compose build --no-cache
 stop:

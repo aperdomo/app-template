@@ -28,8 +28,12 @@ services:
             MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
         ports:
             - "3306:3306"
+        volumes:
+            - db_data:/var/lib/mysql
         healthcheck:
             test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "${DB_USERNAME}", "-p${DB_PASSWORD}" ]
             interval: 20s
             timeout: 10s
             retries: 10
+volumes:
+    db_data:
