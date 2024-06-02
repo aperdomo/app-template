@@ -14,3 +14,5 @@ test:
 	$(DOCKER_COMPOSE_EXEC) php ./vendor/bin/phpunit
 dump-autoload:
 	$(DOCKER_COMPOSE_EXEC) composer dump-autoload
+list-routes:
+	$(DOCKER_COMPOSE_EXEC) php artisan route:list
