@@ -15,6 +15,9 @@
 
 .app-table th, tr, td {
     border: white 1px solid;
-    padding: 5px;
+    padding: 10px;
 }
 
+.app-table caption {
+    padding-bottom: 10px;
+}
