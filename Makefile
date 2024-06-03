@@ -2,7 +2,7 @@ SERVICE_NAME = app-template-service
 DOCKER_EXEC = docker exec -t app-template-service
 
 init:
-	cp .env.example .env && make build && make start && make migrate-fresh-seed
+	cp .env.example .env && make build && make start && make migrate-fresh-seed && make setup-frontend
 build:
 	docker compose build --no-cache
 stop:
@@ -21,3 +21,7 @@ list-routes:
 	$(DOCKER_EXEC) php artisan route:list
 ssh:
 	docker exec -it $(SERVICE_NAME) /bin/sh
+setup-frontend:
+	$(DOCKER_EXEC) npm install && php artisan view:clear && npm run build
+build-assets:
+	$(DOCKER_EXEC) php artisan view:clear && npm run build
