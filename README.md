@@ -1,13 +1,13 @@
 ## About This Project
 
-This is a simple project template for conveniently standing up projects or noodling on thoughts. It is dockerized and is composed of:
+This is a simple project template for conveniently standing up full-stack projects. It is dockerized and is composed of:
 
 - A service layer that is using Laravel 11.x
-  - And is using Apache as a web server.
-- A front end that is using a framework TBD, but using Vite to orchestrate builds.
+  - is using Apache as a web server.
+  - contains a front end that is using a framework TBD, but using Vite to orchestrate builds.
 - A MySQL database.
 
-So, a LAMP stack.
+In other words, it's a LAMP stack.
 
 ## Prerequisites
 
