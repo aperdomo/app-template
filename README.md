@@ -1,16 +1,17 @@
 ## About This Project
 
-This is a simple project that I have created as a template to be able to stand up projects or noodle on thoughts. It is dockerized and is composed of:
+This is a simple project template for conveniently standing up projects or noodling on thoughts. It is dockerized and is composed of:
 
 - A service layer that is using Laravel 11.x
   - And is using Apache as a web server.
-- A front end that is using a framework TBD
+- A front end that is using a framework TBD, but using Vite to orchestrate builds.
 - A MySQL database.
+
+So, a LAMP stack.
 
 ## Prerequisites
 
 - Docker
-- Node
 - Ideally a Unix-based shell to be able to utilize the included `Makefile`.
 
 ## Initially building the project
@@ -23,11 +24,11 @@ This is a simple project that I have created as a template to be able to stand u
 - `make start` - This will start the project.
 - `make stop` - This will stop the project.
 - `make restart` - This will restart the project.
+- `make migrate-fresh-seed` - This will blow away and run fresh database migrations.
+- `make build-assets` - This will build the frontend assets.
+- `make test` - This will run tests.
 
-## Testing the Project
+### Additional Makefile commands
 
-1. `make test` - This will run tests.
-
-## License
-
-- [MIT license](https://opensource.org/licenses/MIT).
+- `make ssh` - This is a shortcut to shell into the app container.
+- `make list-routes` - This is a shortcut to list what routes are available in the application.
