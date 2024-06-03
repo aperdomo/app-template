@@ -7,7 +7,13 @@ This is a simple project template for conveniently standing up full-stack projec
   - contains a front end that is using a framework TBD, but using Vite to orchestrate builds.
 - A MySQL database.
 
-In other words, it's a LAMP stack.
+In other words, a LAMP stack.
+
+When initally built, the project will be accessible at:
+
+```apacheconf
+http://localhost:8000
+```
 
 ## Prerequisites
 
