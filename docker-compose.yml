@@ -1,23 +1,23 @@
 version: '2.4'
 
 services:
-    api:
-        container_name: 'app-template-service'
-        image: app-template:latest
+    app:
+        container_name: "${CONTAINER_NAME_SERVICE}"
+        image: "${COMPOSE_PROJECT_NAME}:latest"
         build:
             target: web
             context: .
         env_file:
             - .env
         ports:
-            - "8000:80"
+            - "${APP_PORT}:80"
         volumes:
             - .:/var/www/html
         depends_on:
             sql:
                 condition: service_healthy
     sql:
-        container_name: 'app-template-sql'
+        container_name: ${CONTAINER_NAME_SQL}
         image: mysql:8.0
         env_file:
             - .env
@@ -27,7 +27,7 @@ services:
             MYSQL_PASSWORD: ${DB_PASSWORD}
             MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
         ports:
-            - "3306:3306"
+            - "${DB_PORT}:3306"
         volumes:
             - db_data:/var/lib/mysql
         healthcheck:
