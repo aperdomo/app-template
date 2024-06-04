@@ -1,0 +1,21 @@
+# Use Node.js as the base image
+FROM node:14
+
+# Set the working directory
+WORKDIR /app
+
+# Copy package.json and package-lock.json
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the code
+COPY . .
+
+# Copy the entrypoint script and make it execmake sutable
+COPY docker/entrypoint.frontend.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/entrypoint.frontend.sh
+
+# Set the entrypoint
+ENTRYPOINT ["entrypoint.frontend.sh"]

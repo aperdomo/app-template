@@ -35,5 +35,15 @@ services:
             interval: 20s
             timeout: 10s
             retries: 10
+    frontend:
+        container_name: "${VITE_APP_NAME}"
+        image: node:16
+        build:
+            context: .
+            dockerfile: Dockerfile.frontend
+        volumes:
+            - .:/app
+        ports:
+            - "${FRONTEND_PORT}:3000"
 volumes:
     db_data:
