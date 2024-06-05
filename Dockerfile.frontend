@@ -1,0 +1,23 @@
+# Use Node.js as the base image
+FROM node:22-alpine as frontend
+
+# Set the working directory
+WORKDIR /app
+
+# Copy only the frontend directory
+COPY ./frontend /app
+
+# Install dependencies
+RUN npm install
+
+# Build the frontend
+RUN npm run build
+
+RUN ls /app
+
+# Copy the entrypoint script and make it executable
+COPY ./docker/entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+# Set the entrypoint
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
