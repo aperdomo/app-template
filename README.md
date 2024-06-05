@@ -4,7 +4,8 @@ This is a simple project template for conveniently standing up full-stack projec
 
 - A service layer that is using Laravel 11.x
   - is using Apache as a web server.
-  - contains a front end that is using a framework TBD, but using Vite to orchestrate builds.
+- A frontend layer using React.
+  - is using Vite as a frontend build tool.
 - A MySQL database.
 
 In other words, a LAMP stack.
