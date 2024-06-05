@@ -35,14 +35,17 @@ services:
             retries: 10
     frontend:
         container_name: "${VITE_APP_NAME}"
+        env_file:
+            - .env
         build:
             context: .
             dockerfile: Dockerfile.frontend
         volumes:
-            - frontend_data:/app
+            - ./frontend:/app
+            - node_modules_volume:/app/node_modules
         ports:
             - "${VITE_PORT}:3000"
 volumes:
     db_data:
     app_data:
-    frontend_data:
+    node_modules_volume:
