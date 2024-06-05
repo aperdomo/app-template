@@ -1,8 +1,10 @@
 #!/bin/sh
 
-# Perform setup tasks here
+# Navigate to your application's directory
+cd /app
 
-npm install && npm run dev
+# Build your application
+npm run build
 
 # Then start the main process
 exec "$@"
