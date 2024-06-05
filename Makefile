@@ -1,3 +1,6 @@
+# Makefile
+include env.mk
+
 DOCKER_EXEC = docker exec -t $(CONTAINER_NAME_SERVICE)
 
 init:
