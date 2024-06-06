@@ -38,6 +38,8 @@ http://localhost:3000
 - `make migrate-fresh-seed` - This will blow away and run fresh database migrations.
 - `make build-assets` - This will build the frontend assets for the laravel app.
 - `make test` - This will run tests.
+- `make test-with-coverage` - This will run tests with coverage printed to standard out.
+- `make test-with-coverage-html` - This will run tests with coverage and open the coverage report in a browser.
 
 ### Additional Makefile commands
 

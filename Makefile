@@ -17,6 +17,10 @@ migrate-fresh-seed:
 	$(DOCKER_EXEC) php artisan migrate:fresh --seed
 test:
 	$(DOCKER_EXEC) php ./vendor/bin/phpunit
+test-with-coverage:
+	$(DOCKER_EXEC) docker-php-ext-enable pcov && $(DOCKER_EXEC) ./vendor/bin/phpunit --coverage-text
+test-with-coverage-html:
+	$(DOCKER_EXEC) docker-php-ext-enable pcov && $(DOCKER_EXEC) ./vendor/bin/phpunit --coverage-html=coverage && open coverage/index.html
 dump-autoload:
 	$(DOCKER_EXEC) composer dump-autoload
 list-routes:
