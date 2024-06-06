@@ -1,19 +1,23 @@
 ## About This Project
 
-This is a simple project template for conveniently standing up full-stack projects. It is dockerized and is composed of:
+This is a simple template for conveniently standing up full-stack projects. It is dockerized and is composed of:
 
-- A service layer that is using Laravel 11.x
-  - is using Apache as a web server.
+- An app service layer that is using Laravel 11.x
+  - + is using Apache as a web server.
 - A frontend layer using React.
   - is using Vite as a frontend build tool.
 - A MySQL database.
 
-In other words, a LAMP stack.
-
-When initally built, the project will be accessible at:
+When initally built, the Laravel application should be accessible at:
 
 ```apacheconf
 http://localhost:8000
+```
+
+.. and the React application should be accessible at:
+
+```apacheconf
+http://localhost:3000
 ```
 
 ## Prerequisites
