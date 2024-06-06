@@ -3,9 +3,9 @@
 This is a simple template for conveniently standing up full-stack projects. It is dockerized and is composed of:
 
 - An app service layer that is using Laravel 11.x
-  - + is using Apache as a web server.
+  - ... and is using Apache as a web server.
 - A frontend layer using React.
-  - is using Vite as a frontend build tool.
+  - ... and is using Vite as a frontend build tool.
 - A MySQL database.
 
 When initally built, the Laravel application should be accessible at:
