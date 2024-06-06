@@ -10,7 +10,7 @@ build:
 stop:
 	docker compose down
 start:
-	docker compose up -d
+	docker compose up -d && open http://localhost:$(APP_PORT) && open http://localhost:$(VITE_PORT)
 restart:
 	make stop && make start
 migrate-fresh-seed:
