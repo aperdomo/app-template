@@ -14,7 +14,7 @@ When initally built, the Laravel application should be accessible at:
 http://localhost:8000
 ```
 
-.. and the React application should be accessible at:
+... and the React application should be accessible at:
 
 ```apacheconf
 http://localhost:3000
