@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# List the contents of the current directory
-ls -al
-
 # Start the application
 npm run dev -- --host
 
