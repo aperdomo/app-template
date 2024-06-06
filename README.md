@@ -4,11 +4,11 @@ This is a simple template for conveniently standing up full-stack projects. It i
 
 - An app service layer that is using Laravel 11.x
   - ... and is using Apache as a web server.
-- A frontend layer using React.
+- A separate frontend layer using React.
   - ... and is using Vite as a frontend build tool.
 - A MySQL database.
 
-When initally built, the Laravel application should be accessible at:
+When initially built, the Laravel application should be accessible at:
 
 ```apacheconf
 http://localhost:8000
@@ -36,7 +36,7 @@ http://localhost:3000
 - `make stop` - This will stop the project.
 - `make restart` - This will restart the project.
 - `make migrate-fresh-seed` - This will blow away and run fresh database migrations.
-- `make build-assets` - This will build the frontend assets.
+- `make build-assets` - This will build the frontend assets for the laravel app.
 - `make test` - This will run tests.
 
 ### Additional Makefile commands
