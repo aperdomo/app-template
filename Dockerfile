@@ -18,6 +18,8 @@ RUN apt-get update && apt-get install -y \
 RUN a2enmod rewrite
 
 # Install PHP extensions
+RUN pecl install pcov \
+    && docker-php-ext-install pdo_mysql zip
 RUN docker-php-ext-install pdo_mysql zip
 
 # Configure Apache DocumentRoot to point to Laravel's public directory
