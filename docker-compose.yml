@@ -10,8 +10,7 @@ services:
         ports:
             - "${APP_PORT}:80"
         volumes:
-            - app_data:/var/www/html
-            - ./coverage:/var/www/html/coverage
+            - ./:/var/www/html:delegated
         depends_on:
             sql:
                 condition: service_healthy
@@ -42,11 +41,10 @@ services:
             context: .
             dockerfile: Dockerfile.frontend
         volumes:
-            - ./frontend:/app
+            - ./frontend:/app:delegated
             - node_modules_volume:/app/node_modules
         ports:
             - "${VITE_PORT}:3000"
 volumes:
     db_data:
-    app_data:
     node_modules_volume:
