@@ -42,9 +42,7 @@ services:
             dockerfile: Dockerfile.frontend
         volumes:
             - ./frontend:/app:delegated
-            - node_modules_volume:/app/node_modules
         ports:
             - "${VITE_PORT}:3000"
 volumes:
     db_data:
-    node_modules_volume:
