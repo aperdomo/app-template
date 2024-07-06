@@ -4,6 +4,8 @@ namespace Tests\Unit\Services;
 
 use App\Repositories\Database\ThingRepository;
 use App\Services\ThingService;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Tests\TestCase;
 
 class ThingServiceTest extends TestCase
@@ -16,19 +18,44 @@ class ThingServiceTest extends TestCase
 
         $thingRepo->expects($this->atLeastOnce())
             ->method('list')
-            ->willReturn([]);
+            ->willReturn(new Collection());
 
-        $repo = new ThingService(
+        $service = new ThingService(
             $thingRepo
         );
 
-        $this->assertIsArray(
-            $repo->list()
+        $this->assertInstanceOf(
+            Collection::class,
+            $service->list()
         );
 
         $this->assertCount(
             0,
-            $repo->list()
+            $service->list()
+        );
+    }
+
+    public function test_it_can_paginated_list(): void
+    {
+        $thingRepo = $this->createMock(
+            ThingRepository::class
+        );
+
+        $thingRepo->expects($this->atLeastOnce())
+            ->method('paginatedList')
+            ->willReturn(new LengthAwarePaginator(
+                new Collection(),
+                0,
+                10
+            ));
+
+        $service = new ThingService(
+            $thingRepo
+        );
+
+        $this->assertInstanceOf(
+            LengthAwarePaginator::class,
+            $service->paginatedList()
         );
     }
 }

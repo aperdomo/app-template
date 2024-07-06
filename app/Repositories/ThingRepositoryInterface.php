@@ -2,7 +2,19 @@
 
 namespace App\Repositories;
 
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Collection;
+
 interface ThingRepositoryInterface
 {
-    public function list(): array;
+    /**
+     * @return Collection
+     */
+    public function list(): Collection;
+
+    /**
+     * @param int $pageSize
+     * @return LengthAwarePaginator
+     */
+    public function paginatedList(int $pageSize): LengthAwarePaginator;
 }
