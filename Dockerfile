@@ -1,9 +1,6 @@
 # Use PHP with Apache as the base image
 FROM php:8.3-apache as web
 
-# Set the working directory
-WORKDIR /var/www/html
-
 # Install Additional System Dependencies, Node.js, npm and clear cache
 RUN apt-get update && apt-get install -y \
     libzip-dev \
@@ -28,12 +25,23 @@ ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf \
     && sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
-# Install composer and project dependencies
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
-RUN composer install
-
 # Copy the application code
-COPY . .
+COPY . /var/www/html
 
-# Set permissions
-RUN chown -R www-data:www-data storage bootstrap/cache
+# Set the working directory
+WORKDIR /var/www/html
+
+# Create a non-root user and switch to it
+RUN addgroup --system secgroup \
+    && adduser --system --ingroup secgroup appuser
+
+# Change ownership of the /var/www/html to appuser
+RUN chown -R appuser:secgroup /var/www/html
+
+USER appuser
+
+# Install composer
+COPY --from=composer:2.7 /usr/bin/composer /usr/bin/composer
+
+# Install project dependencies
+RUN composer install --no-plugins --no-scripts

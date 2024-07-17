@@ -20,7 +20,6 @@ yarn-error.log
 /.vscode
 /.vendor
 /storage*
-artisan
 .gitattributes
 .DS_store
 /coverage
