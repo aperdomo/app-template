@@ -10,7 +10,7 @@ build:
 stop:
 	docker compose down
 start:
-	docker compose up -d && open http://localhost:$(APP_PORT) && open http://localhost:$(VITE_PORT)
+	docker compose up -d
 restart:
 	make stop && make start
 migrate-fresh-seed:
@@ -26,7 +26,7 @@ dump-autoload:
 list-routes:
 	$(DOCKER_EXEC) php artisan route:list
 ssh:
-	docker exec -it $(CONTAINER_NAME_SERVICE) /bin/sh
+	docker exec -it $(CONTAINER_NAME_SERVICE) /bin/bash
 setup-frontend:
 	$(DOCKER_EXEC) npm install && php artisan view:clear && npm run build
 build-assets:
