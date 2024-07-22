@@ -13,8 +13,6 @@ RUN npm install
 # Build the frontend
 RUN npm run build
 
-RUN ls /app
-
 # Copy the entrypoint script and make it executable
 COPY ./docker/entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh

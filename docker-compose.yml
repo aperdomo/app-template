@@ -43,6 +43,6 @@ services:
         volumes:
             - ./frontend:/app:delegated
         ports:
-            - "${VITE_PORT}:3000"
+            - "${VITE_PORT}:${VITE_PORT}"
 volumes:
     db_data:
