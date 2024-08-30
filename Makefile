@@ -1,4 +1,6 @@
 # Makefile
+.PHONY: init build stop start restart migrate-fresh-seed test test-with-coverage test-with-coverage-html dump-autoload list-routes ssh setup-frontend build-assets
+
 include env.mk
 
 DOCKER_EXEC = docker exec -t $(CONTAINER_NAME_SERVICE)
