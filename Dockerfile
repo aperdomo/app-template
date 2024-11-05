@@ -43,7 +43,8 @@ RUN mkdir -p /var/www/html/.npm-cache \
     && chown -R appuser:secgroup /var/www/html
 
 # Change ownership of the /var/www/html to appuser
-RUN chown -R appuser:secgroup /var/www/html
+RUN chown -R appuser:secgroup /var/www/html \
+    && chown -R appuser:secgroup /usr/local/etc/php/conf.d
 
 # Switch to appuser
 USER appuser
@@ -57,10 +58,3 @@ COPY --from=node_base /usr/local/lib /usr/local/lib
 
 # Ensure appuser has access to Node and npm
 ENV PATH="/usr/local/bin:${PATH}"
-
-# Install project dependencies
-RUN composer install --no-plugins --no-scripts
-
-# Build node deps.
-RUN rm -rf /var/www/html/node_modules \
-    && npm i && npm run build
