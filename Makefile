@@ -1,5 +1,5 @@
 # Makefile
-.PHONY: init build stop start restart migrate-fresh-seed test test-with-coverage test-with-coverage-html dump-autoload list-routes service-shell setup-service-frontend
+.PHONY: init build stop start restart migrate-fresh-seed test test-with-coverage test-with-coverage-html dump-autoload list-routes service-shell setup-service-frontend phpcs phpcs-fix
 
 ifneq (,$(wildcard ./.env))
     include .env
@@ -51,3 +51,7 @@ open-service:
 	open http://localhost:$(APP_PORT)
 open-frontend:
 	open http://localhost:$(VITE_PORT)
+phpcs:
+	$(DOCKER_EXEC) ./vendor/bin/phpcs -p
+phpcs-fix:
+	$(DOCKER_EXEC) ./vendor/bin/php-cs-fixer fix

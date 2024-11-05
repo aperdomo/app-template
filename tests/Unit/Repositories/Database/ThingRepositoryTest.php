@@ -2,6 +2,8 @@
 
 namespace Tests\Unit\Repositories\Database;
 
+use App\Filters\ListThingsFilter;
+use App\Models\Thing;
 use App\Repositories\Database\ThingRepository;
 use Database\Seeders\ThingSeeder;
 use Illuminate\Database\Eloquent\Collection;
@@ -36,7 +38,80 @@ class ThingRepositoryTest extends TestCase
 
         $this->assertInstanceOf(
             LengthAwarePaginator::class,
-            $repo->paginatedList()
+            $repo->paginatedList(
+                new ListThingsFilter()
+            )
+        );
+    }
+
+    public function test_it_can_filter_paginated_list_by_name(): void
+    {
+        $repo = new ThingRepository();
+        $expected = Thing::factory()->create([
+            'name' => 'Test Thing ' . uniqid(),
+            'description' => 'Test Description',
+        ]);
+
+        $actual = $repo->paginatedList(
+            new ListThingsFilter(
+                $expected->name,
+            )
+        );
+
+        $this->assertInstanceOf(
+            LengthAwarePaginator::class,
+            $actual
+        );
+
+        $this->assertCount(
+            1,
+            $actual
+        );
+
+        $this->assertEquals(
+            $expected->name,
+            $actual->first()->name
+        );
+
+        $this->assertEquals(
+            $expected->description,
+            $actual->first()->description
+        );
+    }
+
+    public function test_it_can_filter_paginated_list_by_description(): void
+    {
+        $repo = new ThingRepository();
+        $expected = Thing::factory()->create([
+            'name' => 'Test Thing ' . uniqid(),
+            'description' => 'Test Description ' . uniqid(),
+        ]);
+
+        $actual = $repo->paginatedList(
+            new ListThingsFilter(
+                null,
+                $expected->description,
+            )
+        );
+
+        $this->assertInstanceOf(
+            LengthAwarePaginator::class,
+            $actual
+        );
+
+        $this->assertCount(
+            1,
+            $actual
+        );
+
+        $this->assertEquals(
+            $expected->name,
+            $actual->first()->name
+        );
+
+        $this->assertEquals(
+            $expected->description,
+            $actual->first()->description
         );
     }
 }

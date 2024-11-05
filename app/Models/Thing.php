@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @method static paginate(int $pageSize)
+ * @property string $name
+ * @property string $description
  */
 class Thing extends Model
 {

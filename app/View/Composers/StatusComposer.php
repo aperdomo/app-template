@@ -10,8 +10,9 @@ class StatusComposer
     /**
      * Create a new composer.
      */
-    public function __construct(
-    ) {}
+    public function __construct()
+    {
+    }
 
     /**
      * Bind data to the view.

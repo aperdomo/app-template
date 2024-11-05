@@ -24,3 +24,8 @@ yarn-error.log
 .DS_store
 /coverage
 .npm-cache
+.php-cs-fixer.cache
+phpcs:
+	$(DOCKER_EXEC) ./vendor/bin/phpcs -p
+phpcs-fix:
+	$(DOCKER_EXEC) ./vendor/bin/php-cs-fixer fix

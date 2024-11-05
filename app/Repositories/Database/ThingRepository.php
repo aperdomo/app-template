@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Database;
 
+use App\Filters\ListThingsFilter;
 use App\Models\Thing;
 use App\Repositories\ThingRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
@@ -9,8 +10,6 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class ThingRepository implements ThingRepositoryInterface
 {
-    private const PER_PAGE = 10;
-
     /**
      * @return Collection
      */
@@ -20,12 +19,30 @@ class ThingRepository implements ThingRepositoryInterface
     }
 
     /**
-     * @param int $pageSize
+     * @param ListThingsFilter $filter
      * @return LengthAwarePaginator
      */
     public function paginatedList(
-        int $pageSize = self::PER_PAGE
+        ListThingsFilter $filter
     ): LengthAwarePaginator {
-        return Thing::paginate($pageSize);
+        $query = Thing::query();
+
+        if ($filter->name) {
+            $query->where(
+                'name',
+                'like',
+                "%$filter->name%"
+            );
+        }
+
+        if ($filter->description) {
+            $query->where(
+                'description',
+                'like',
+                "%$filter->description%"
+            );
+        }
+
+        return $query->paginate($filter->pageSize);
     }
 }
