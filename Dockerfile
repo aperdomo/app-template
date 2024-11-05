@@ -1,8 +1,8 @@
 # Stage 1: Node base
-FROM node:21 as node_base
+FROM node:21 AS node_base
 
 # Stage 2: PHP with Apache
-FROM php:8.3-apache as web
+FROM php:8.3-apache AS web
 
 # Install Additional System Dependencies and clear cache
 RUN apt-get update && apt-get install -y \
