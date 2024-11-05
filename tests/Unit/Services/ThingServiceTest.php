@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Services;
 
+use App\Filters\ListThingsFilter;
 use App\Repositories\Database\ThingRepository;
 use App\Services\ThingService;
 use Illuminate\Database\Eloquent\Collection;
@@ -55,7 +56,9 @@ class ThingServiceTest extends TestCase
 
         $this->assertInstanceOf(
             LengthAwarePaginator::class,
-            $service->paginatedList()
+            $service->paginatedList(
+                new ListThingsFilter()
+            )
         );
     }
 }

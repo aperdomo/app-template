@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Repositories\Database\ThingRepository;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
+use App\Filters\ListThingsFilter;
 
 readonly class ThingService
 {
@@ -26,11 +27,12 @@ readonly class ThingService
     }
 
     /**
+     * @param ListThingsFilter $filter
      * @return LengthAwarePaginator
      */
-    public function paginatedList(): LengthAwarePaginator
+    public function paginatedList(ListThingsFilter $filter): LengthAwarePaginator
     {
         return $this->thingRepository
-            ->paginatedList();
+            ->paginatedList($filter);
     }
 }
