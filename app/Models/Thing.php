@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @method static paginate(int $pageSize)
+ * @method static find(string $thingId)
+ * @property string $id
  * @property string $name
  * @property string $description
  */

@@ -11,6 +11,15 @@ use Illuminate\Pagination\LengthAwarePaginator;
 class ThingRepository implements ThingRepositoryInterface
 {
     /**
+     * @param string $thingId
+     * @return Thing
+     */
+    public function find(string $thingId): Thing
+    {
+        return Thing::find($thingId);
+    }
+
+    /**
      * @return Collection
      */
     public function list(): Collection

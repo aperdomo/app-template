@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Thing;
 use App\Repositories\Database\ThingRepository;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -15,6 +16,16 @@ readonly class ThingService
     public function __construct(
         private ThingRepository $thingRepository
     ) {
+    }
+
+    /**
+     * @param string $thingId
+     * @return Thing
+     */
+    public function find(string $thingId): Thing
+    {
+        return $this->thingRepository
+            ->find($thingId);
     }
 
     /**
