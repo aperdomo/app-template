@@ -15,6 +15,24 @@ class ThingRepositoryTest extends TestCase
 {
     use RefreshDatabase;
 
+    public function test_it_can_find(): void
+    {
+        $repo = new ThingRepository();
+
+        $thing = Thing::factory()->create();
+        $actual = $repo->find($thing->id);
+
+        $this->assertInstanceOf(
+            Thing::class,
+            $actual
+        );
+
+        $this->assertEquals(
+            $thing->id,
+            $actual->id
+        );
+    }
+
     public function test_it_can_list(): void
     {
         $repo = new ThingRepository();
@@ -32,7 +50,7 @@ class ThingRepositoryTest extends TestCase
         );
     }
 
-    public function test_it_can_paginated_list(): void
+    public function test_it_can_get_paginated_list(): void
     {
         $repo = new ThingRepository();
 
